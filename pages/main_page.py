@@ -1,1 +1,9 @@
-D:\govnokod\QASelenium\autotest_final\pages
+from .base_page import BasePage
+from selenium.webdriver.common.by import By
+
+
+class MainPage(BasePage):
+    def go_to_login_page(self):
+        """ Переходит на страницу логина """
+        login_link = self.browser.find_element(By.CSS_SELECTOR, "#login_link")
+        login_link.click()
