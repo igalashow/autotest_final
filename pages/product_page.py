@@ -17,7 +17,7 @@ class ProductPage(BasePage):
         """ Добавляет товар в корзину """
         button = self.browser.find_element(*ProductPageLocators.ADD_BUTTON)
         button.click()
-        self.solve_quiz_and_get_code()
+        # self.solve_quiz_and_get_code()
 
 
     def should_be_product_name(self,product_name):
@@ -29,3 +29,14 @@ class ProductPage(BasePage):
         """ Проверяет соответствие цены товара в корзине """
         assert price == self.browser.find_element(*ProductPageLocators.ADDED_PRODUCT_PRICE).text,\
         'Product price is not correct!'
+
+    def should_not_be_success_message(self):
+        """ Проверяет, что элемент отсутствует на странице """
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_be_disappeared(self):
+        """ Проверяет, что элемент исчез со страницы (вообще лучше проверять в два приёма:
+         сначала проверить, что он был, а потом что его не стало)"""
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+        'Success message has not disappeared'
