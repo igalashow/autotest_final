@@ -20,6 +20,12 @@ class BasePage():
         login_link.click()
         # return LoginPage(browser=self.browser, url=self.browser.current_url)
 
+    def go_to_basket_in_header(self):
+        """ Переходит в корзину по кнопке из шапки """
+        basket_button = self.browser.find_element(*BasePageLocators.BASKET_IN_HEADER)
+        basket_button.click()
+
+
     def is_element_present(self, how, what):
         """ """
         try:
