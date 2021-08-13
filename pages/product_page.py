@@ -17,6 +17,7 @@ class ProductPage(BasePage):
         """ Добавляет товар в корзину """
         button = self.browser.find_element(*ProductPageLocators.ADD_BUTTON)
         button.click()
+        self.solve_quiz_and_get_code()
 
 
     def should_be_product_name(self,product_name):
