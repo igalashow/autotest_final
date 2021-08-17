@@ -12,7 +12,7 @@ class BasePage():
         """ Конструктор, вызывающий браузер """
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
+        # self.browser.implicitly_wait(timeout)
 
     def go_to_login_page(self):
         """ Переходит на страницу логина """
@@ -73,4 +73,6 @@ class BasePage():
         """ Находит ссылку на страницу логина  """
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
-
+    def should_be_autorized_user(self):
+        """ Проверяет, что пользователь залогинен """
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorised user"
